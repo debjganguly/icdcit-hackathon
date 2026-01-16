@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Map, { Marker } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-const TOKEN = "YOUR_MAPBOX_TOKEN";
+const TOKEN = "pk.eyJ1IjoiYXZpZGlwdGEiLCJhIjoiY21rZnZxZHg2MDFheDNxcGZlbWJjamw5YyJ9.c57B3jUBmbJZ0xvSxaJY6g";
 
 function MapView() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/uhi")
+    fetch("http://127.0.0.1:5000/api/uhi")
       .then(res => res.json())
-      .then(data => setData(data));
+      .then(setData);
   }, []);
 
   return (
