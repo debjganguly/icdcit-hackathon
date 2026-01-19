@@ -73,7 +73,6 @@ class UHIViewModel {
 
 // Main App Component (View)
 function App() {
-  const scrollRef = React.useRef(null);
 
   // Initialize ViewModel
   const [viewModel] = useState(() => new UHIViewModel());
@@ -92,9 +91,6 @@ function App() {
   const [selectedPoint, setSelectedPoint] = useState(null);
   const [showHeatmap, setShowHeatmap] = useState(false);
   const [activeView, setActiveView] = useState("map"); // 'map' or 'analytics'
-const [showHeader, setShowHeader] = useState(true);
-
-
 
   // Check backend health on mount
   useEffect(() => {
@@ -216,9 +212,9 @@ const [showHeader, setShowHeader] = useState(true);
   };
 
   return (
-    <div className={`app ${showHeader ? "with-header" : "no-header"}`}>
-      {/* Header */}
-      <header className={`app-header ${showHeader ? "header-show" : "header-hide"}`}>
+    <div className="app">
+<header className="app-header">
+
         <div className="header-content">
           <div className="header-left">
             <h1 className="app-title">

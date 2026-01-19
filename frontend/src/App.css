@@ -562,26 +562,7 @@ body {
 }
 
 .app-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
-}
-
-.header-hide {
-  transform: translateY(-110%);
-  opacity: 0;
-}
-
-.header-show {
-  transform: translateY(0);
+  position: relative;  /* or just remove position completely */
+  transform: none;
   opacity: 1;
-}
-
-.app {
-  padding-top: 90px; /* adjust based on your header height */
 }
