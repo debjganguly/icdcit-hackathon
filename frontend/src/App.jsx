@@ -100,11 +100,28 @@ const [showHeader, setShowHeader] = useState(true);
 
   useEffect(() => {
   let lastScrollY = window.scrollY;
+  let hasUserScrolled = false;
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
-    if (currentScrollY < lastScrollY || currentScrollY < 10) {
+    if (currentScrollY > 20) {
+      hasUserScrolled = true;
+    }
+
+    if (currentScrollY < 20) {
+      setShowHeader(true);
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    if (!hasUserScrolled) {
+      setShowHeader(true);
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    if (currentScrollY < lastScrollY) {
       setShowHeader(true); // scrolling up
     } else {
       setShowHeader(false); // scrolling down
@@ -117,6 +134,7 @@ const [showHeader, setShowHeader] = useState(true);
 
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
+
 
 
   // Load data on mount
